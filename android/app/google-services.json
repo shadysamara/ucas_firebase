@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "498621944889",
+    "project_id": "ucas-b72ff",
+    "storage_bucket": "ucas-b72ff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:498621944889:android:d540199bb399a46a47a9e8",
+        "android_client_info": {
+          "package_name": "com.ucas.firebaseproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "498621944889-4f5egh7bbhk0bkm3becd5diselj4ilub.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCR6hfYVy5ksiX2D5f8vpyY_klzOUVsOGg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "498621944889-4f5egh7bbhk0bkm3becd5diselj4ilub.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
