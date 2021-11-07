@@ -63,10 +63,10 @@ class SignInScreen extends StatelessWidget {
                   child: Text('LOGIN'),
                   onPressed: () {
                     if (loginKey.currentState.validate()) {
-                      Provider.of<AuthProvider>(context, listen: false).login(
-                          emailController.text,
-                          passwordController.text,
-                          context);
+                      Provider.of<AuthProvider>(context, listen: false).getUser(
+                        emailController.text,
+                        passwordController.text,
+                      );
                     }
                   })
             ],

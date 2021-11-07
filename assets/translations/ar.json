@@ -1,0 +1,12 @@
+{
+    "email":"أدخل بريدك الالكتروني",
+    "password":"أدخل كلمة المرور",
+    "confirm_password":"أعد كتابة كلمة المرور",
+    "first_name":"الاسم الاول",
+    "last_name":"الاسم لااخير",
+    "male":"ذكر",
+    "female":"أنثى",
+    "Register":"تسجيل جديد",
+    "already_have_account":"هل تملك حسابا بالفعل؟",
+    "change_language":"تغيير الى الانجليزية"
+}

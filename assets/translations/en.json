@@ -1,0 +1,12 @@
+{
+    "email":"Enter Your Email",
+    "password":"Enter Password",
+    "confirm_password":"Please confirm your password",
+    "first_name":"First Name",
+    "last_name":"Last Name",
+    "male":"Male",
+    "female":"Female",
+    "Register":"Register",
+    "already_have_account":"already have account?",
+    "change_language":"change to arabic"
+}
