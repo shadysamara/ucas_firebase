@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_project/auth/providers/auth_provider.dart';
 
 class RegisterRequest {
+  String imageUrl;
   String userId;
   String fName;
   String lName;
@@ -15,6 +16,7 @@ class RegisterRequest {
   String marketId;
   RegisterRequest(
       {this.userId,
+      this.imageUrl,
       @required this.fName,
       @required this.lName,
       @required this.email,
@@ -46,6 +48,7 @@ class RegisterRequest {
 
   factory RegisterRequest.fromMap(Map<String, dynamic> map) {
     return RegisterRequest(
+        imageUrl: map['imageUrl'],
         userId: map['userId'],
         fName: map['fName'],
         isMershant: map['isMershant'],

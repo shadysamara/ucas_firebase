@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       body: Center(
-        child: Text('Body'),
+        child: RaisedButton(onPressed: () {}),
       ),
     );
   }

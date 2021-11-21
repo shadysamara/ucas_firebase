@@ -8,5 +8,7 @@
     "female":"Female",
     "Register":"Register",
     "already_have_account":"already have account?",
-    "change_language":"change to arabic"
+    "change_language":"change to arabic",
+    "home":"Home",
+    "profile":"Profile"
 }
