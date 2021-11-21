@@ -2,6 +2,9 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_project/auth/providers/auth_provider.dart';
+import 'package:firebase_project/auth/ui/home_screen.dart';
 import 'package:firebase_project/ecommerce/models/product_request.dart';
 import 'package:firebase_project/ecommerce/respositories/ecommerce_helper.dart';
 import 'package:flutter/cupertino.dart';
@@ -9,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 
 class ProductProvider extends ChangeNotifier {
   File pickedFile;
@@ -31,6 +35,15 @@ class ProductProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  clearVariables() {
+    this.pickedFile = null;
+    this.productPrice.clear();
+    this.productDescription.clear();
+    this.productName.clear();
+    this.productQuantity.clear();
+    notifyListeners();
+  }
+
   addProduct() async {
     if (pickedFile == null) {
       log('you have t0 choose image');
@@ -43,6 +56,7 @@ class ProductProvider extends ChangeNotifier {
           productDescription: productDescription.text,
           productName: productName.text,
           quantity: productQuantity.text,
+          mershantId: FirebaseAuth.instance.currentUser.uid,
           imageUrl: imageUrl);
       bool isAdded =
           await EcommerceHelper.ecommerceHelper.addProduct(productRequest);
@@ -53,7 +67,10 @@ class ProductProvider extends ChangeNotifier {
         actions: [
           TextButton(
               onPressed: () {
-                Get.back();
+                clearVariables();
+                Provider.of<AuthProvider>(Get.context, listen: false)
+                    .getMershantProducts();
+                Get.offAll(HomeScreen());
               },
               child: Text('ok'))
         ],

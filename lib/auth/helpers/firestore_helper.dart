@@ -35,7 +35,7 @@ class FirestoreHelper {
         .get();
     List<ProductRequest> products = querySnapshot.docs.map((e) {
       Map map = e.data();
-      map['id'] = e.id;
+      map['productId'] = e.id;
       return ProductRequest.fromMap(map);
     }).toList();
     return products;

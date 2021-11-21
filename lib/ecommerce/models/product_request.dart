@@ -9,8 +9,10 @@ class ProductRequest {
   String price;
   String imageUrl;
   String quantity;
+  String mershantId;
   ProductRequest({
     this.productId,
+    this.mershantId,
     @required this.productName,
     @required this.productDescription,
     @required this.price,
@@ -22,6 +24,7 @@ class ProductRequest {
     Map<String, dynamic> map = {
       'productName': productName,
       'productDescription': productDescription,
+      'mershantId': mershantId,
       'price': price,
       'imageUrl': imageUrl,
       'quantity': quantity,
@@ -38,6 +41,7 @@ class ProductRequest {
         price: map['price'],
         imageUrl: map['imageUrl'],
         quantity: map['quantity'],
+        mershantId: map['mershantId'],
         productId: map['id']);
   }
 }

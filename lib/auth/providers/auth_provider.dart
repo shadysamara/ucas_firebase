@@ -8,6 +8,7 @@ import 'package:firebase_project/auth/helpers/firestore_helper.dart';
 import 'package:firebase_project/auth/models/register_request.dart';
 import 'package:firebase_project/auth/ui/home_screen.dart';
 import 'package:firebase_project/auth/ui/sign_up_screen.dart';
+import 'package:firebase_project/ecommerce/models/product_request.dart';
 import 'package:firebase_project/helpers.dart';
 import 'package:firebase_project/splach_screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -15,6 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 
 enum Gender { male, female }
 enum UserType { mershant, customer }
@@ -109,6 +111,7 @@ class AuthProvider extends ChangeNotifier {
     registerRequest.userId = userCredential.user.uid;
     FirestoreHelper.firestoreHelper.saveUserInFirestore(registerRequest);
     EasyLoading.dismiss();
+
     Helpers.helpers.showDialoug(
         'success',
         'your user has been successfully registerd, press ok to go to home page',
@@ -121,6 +124,10 @@ class AuthProvider extends ChangeNotifier {
     if (userCredential != null) {
       RegisterRequest registerRequest =
           await getUserBasedOnId(userCredential.user.uid);
+      if (registerRequest.isMershant) {
+        getMershantProducts();
+      }
+      Get.off(HomeScreen());
     }
   }
 
@@ -129,6 +136,7 @@ class AuthProvider extends ChangeNotifier {
         await FirestoreHelper.firestoreHelper.getUserFromFirestore(userId);
     RegisterRequest registerRequest = RegisterRequest.fromMap(map);
     this.registerRequest = registerRequest;
+    getMershantProducts();
     return registerRequest;
   }
 
@@ -167,6 +175,15 @@ class AuthProvider extends ChangeNotifier {
     firstNameController.text = this.registerRequest.fName;
     lastNameController.text = this.registerRequest.lName;
     this.selectedGender = this.registerRequest.gender;
+    notifyListeners();
+  }
+
+  List<ProductRequest> products;
+  getMershantProducts() async {
+    String mershantId = FirebaseAuth.instance.currentUser.uid;
+    products = await FirestoreHelper.firestoreHelper
+        .getAllProductsForMershant(mershantId);
+
     notifyListeners();
   }
 }
